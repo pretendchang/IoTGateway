@@ -1,0 +1,3 @@
+中文編碼：big5
+alarm message最大長度190 byte
+

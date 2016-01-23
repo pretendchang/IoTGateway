@@ -1,0 +1,34 @@
+.SUFFIXES : .x .o .c .s
+
+ARM_TOOLS_PATH = /usr/local/arm/3.3.2
+
+
+lib=$(ARM_TOOLS_PATH)/lib
+lib1=$(ARM_TOOLS_PATH)/arm-unknown-linux-gnu/lib
+include=-I./ -I$(ARM_TOOLS_PATH)/include
+
+CC=g++
+AS=$(ARM_TOOLS_PATH)/bin/arm-linux-as
+LD=$(ARM_TOOLS_PATH)/bin/arm-linux-ld
+
+WEC_LDFLAGS=-L./ -L${lib1}
+
+OBJS = ARMLcdTest.o
+
+#LIBS=-lc -lgcc -lc
+
+TARGET =ARMLcdTest
+
+all: dll.o
+	$(CC) -shared -lc -o tagsystem.so util.o action.o command.o Device.o main.o
+dll.o:
+	$(CC) -c -fpic util.cpp -fpic Action.cpp -fpic Command.cpp -fpic Device.cpp -fpic main.cpp
+	 
+clean:
+	rm -f *.o 
+	rm -f *.x 
+	rm -f *.flat
+	rm -f *.map
+	rm -f $(TARGET)
+	rm -f temp
+	rm -f *.bak

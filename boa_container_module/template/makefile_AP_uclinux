@@ -1,0 +1,24 @@
+.SUFFIXES : .x .o .c .s
+
+ARM_TOOLS_PATH = /usr/local/arm/3.3.2
+
+
+lib=$(ARM_TOOLS_PATH)/lib
+include=-I./ -I../ -I$(ARM_TOOLS_PATH)/include
+
+CC=$(ARM_TOOLS_PATH)/bin/arm-linux-g++ ${include}  -L./ -L../ -L${lib} -lCPEMoudle
+AS=$(ARM_TOOLS_PATH)/bin/arm-linux-as
+LD=$(ARM_TOOLS_PATH)/bin/arm-linux-ld
+
+TARGET =ARMLcdTest
+	 
+#release
+.PHONY: dll.o clean
+all: 
+	$(CC) -shared -o log.out template.cpp
+
+
+		 
+clean:
+	rm -f *.o 
+	rm -f *.so

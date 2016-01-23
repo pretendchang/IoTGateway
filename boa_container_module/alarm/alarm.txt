@@ -1,0 +1,83 @@
+  array set::alarmrul1 {
+	ip1	 192
+  ip2	1
+	ip3 2
+	ip4 63
+	ruletype 2
+	interval 30
+	delay 60
+	startTime 16:50
+	stopTime 17:28
+	mainValue @100::tempvalue1
+	mainThreshold1 26
+	mainThreshold2 {26 30}
+	mainThreshold3 30
+	concern1 1
+	concern2 1
+	concern3 1
+	pairValue1 @100::tempvalue1
+	pairValue2 @100::tempvalue1
+	pairValue3 @100::tempvalue1
+	pairThreshold1 {0 26}
+	pairThreshold2 {26 30}
+	pairThreshold3 {30 1000}
+	msg1 err1
+	msg2 err2
+	msg3 err3
+}
+
+  array set::alarmrul2 {
+	ip1	 192
+  ip2	1
+	ip3 2
+	ip4 63
+	ruletype 2
+	interval 30
+	delay 60
+	startTime 8:0
+	stopTime 22:0
+	mainValue @100::tempvalue2
+	mainThreshold1 26
+	mainThreshold2 {26 30}
+	mainThreshold3 30
+	concern1 1
+	concern2 1
+	concern3 1
+	pairValue1 @100::tempvalue2
+	pairValue2 @100::tempvalue2
+	pairValue3 @100::tempvalue2
+	pairThreshold1 {0 26}
+	pairThreshold2 {26 30}
+	pairThreshold3 {30 1000}
+	msg1 err21
+	msg2 err22
+	msg3 err23
+}
+
+  array set::alarmrul4 {
+	ip1	 192
+  ip2	1
+	ip3 2
+	ip4 63
+	ruletype 2
+	interval 30
+	delay 60
+	startTime 8:0
+	stopTime 22:0
+	mainValue @100::tempvalue3
+	mainThreshold1 26
+	mainThreshold2 {26 30}
+	mainThreshold3 30
+	concern1 1
+	concern2 1
+	concern3 1
+	pairValue1 @100::tempvalue3
+	pairValue2 @100::tempvalue3
+	pairValue3 @100::tempvalue3
+	pairThreshold1 {0 26}
+	pairThreshold2 {26 30}
+	pairThreshold3 {30 1000}
+	msg1 err31
+	msg2 err32
+	msg3 err33
+}

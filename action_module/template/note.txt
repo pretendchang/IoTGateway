@@ -1,0 +1,19 @@
+1. 實作
+extern ActionModule *module;
+void InitModuleObject()
+{
+	module = new yangyangActionModule();
+}
+
+2. 繼承且實作ActionModule抽象類別 EntryPoint Init Free三個函數
+
+3. ExecuteCommand
+(1,前端devid
+ "R2", name      
+ (U32*)&a,放跟控制器通訊資料的buffer(格式是float)
+ 4, //參考action.txt的格式 (跟控制器通訊的資料長度)
+ 0, //參考action.txt的格式 (跟控制器通訊時的資料格式)
+ &state);
+
+4. 注意事項
+entry point的para 在command物件中不會轉換物件型別，因此para的格式問題要自行處理(都是float格式)

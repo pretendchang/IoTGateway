@@ -1,0 +1,3 @@
+testing condition: 9 httpreliability   5*10 apache bench
+0ms   ->                   2.3s
+200ms -> max response time 45s

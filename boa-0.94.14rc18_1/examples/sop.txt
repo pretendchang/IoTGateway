@@ -1,0 +1,6 @@
+啟動方法  ./boa -c /home/root/test    /home/root/test 放boa.conf的路徑
+修改boa.conf
+ ip, server_root路徑, log路徑, mimetype路徑
+壓力測試：ab -n10000 -c10 http://172.28.29.105/steve6.htm
+
+http://172.28.29.105/function/command?command=::@100%20rv

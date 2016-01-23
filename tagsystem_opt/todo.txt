@@ -1,0 +1,2 @@
+action 新增datafmt 必須實作到initaction函數中
+main.c InitProtocol要更改

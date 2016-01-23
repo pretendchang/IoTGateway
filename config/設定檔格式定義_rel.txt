@@ -1,0 +1,33 @@
+dev.txt
+1st field: 前端系統使用的devid(必須unique)
+2nd      : 前端系統所連接的底層設備通訊站號
+3rd      : 前端系統所連接的底層設備通訊協定主檔名
+4th      : 連線conn id ...對應conn.txt
+
+
+action.txt
+1st : 前端系統使用的devid
+2nd : action name
+3rd : 底層設備address
+4th : IO型態 1: read, 2:write  3:mask write
+5th : IO的資料長度, 以byte為單位
+6th : 資料型態:0 for uint, 1 for int, 2 for bool, 3 for float, 4 for BCD
+
+command.txt
+1st : 對應到command.txt 1st field的id(平台所設計的邏輯控制架構 device編號)
+2nd : 平台系統定義的tagname
+3rd : 前端系統使用的devid
+4th : action name
+5th : 通訊參數
+
+
+conn.txt
+1st : conn id
+2nd : 通訊物理層種類 serial(0), ethernet(1) ... 
+3rd : ip or serial通訊參數
+4th : ethernet(port)  serial:which com port, 0 for com1, 1 for com2 ...
+5th : module主檔名
+
+webdevice.txt
+1st : 對應到command.txt 1st field的id(平台所設計的邏輯控制架構 device編號)
+2nd : 平台系統的device id

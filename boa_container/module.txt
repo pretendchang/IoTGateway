@@ -1,0 +1,2 @@
+alarm,./module.so
+alarm1,./module1.so

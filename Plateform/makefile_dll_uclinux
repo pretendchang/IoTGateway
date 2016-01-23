@@ -1,0 +1,58 @@
+.SUFFIXES : .x .o .c .s
+
+ARM_TOOLS_PATH = /usr/local/arm/3.3.2
+
+
+lib=$(ARM_TOOLS_PATH)/lib
+lib1=$(ARM_TOOLS_PATH)/arm-unknown-linux-gnu/lib
+include=-I./ -I$(ARM_TOOLS_PATH)/include
+
+Multithread=-D_Multithread_
+DebugPrint=-D_DbgPrint_
+
+CC=$(ARM_TOOLS_PATH)/bin/arm-linux-gcc ${include}  -L./ -L${lib} ${Multithread}
+CCM=$(ARM_TOOLS_PATH)/bin/arm-linux-gcc ${include}  -L./ -L${lib} ${Multithread}
+CCMD=$(ARM_TOOLS_PATH)/bin/arm-linux-gcc ${include}  -L./ -L${lib} ${Multithread} ${DebugPrint}
+CCD=$(ARM_TOOLS_PATH)/bin/arm-linux-gcc ${include}  -L./ -L${lib} ${DebugPrint}
+AS=$(ARM_TOOLS_PATH)/bin/arm-linux-as
+LD=$(ARM_TOOLS_PATH)/bin/arm-linux-ld
+
+WEC_LDFLAGS=-L./ -L${lib1}
+
+OBJS = ARMLcdTest.o
+
+#LIBS=-lc -lgcc -lc
+
+TARGET =ARMLcdTest
+
+#release
+.PHONY: dll.o clean
+all: dll.o
+	$(CC) -shared -lc -o Plateform.so Driver.o Protocol.o util.o
+dll.o: Driver.c Protocol.c util.c clean
+	$(CC) -c -fpic Driver.c -fpic Protocol.c -fpic util.c
+
+#multithread with debug
+.PHONY: MDdll.o clean
+MD: MDdll.o
+	$(CCMD) -shared -lc -o Plateform.so Driver.o Protocol.o util.o
+MDdll.o: Driver.c Protocol.c util.c clean
+	$(CCMD) -c  -fpic Driver.c -fpic Protocol.c -fpic util.c
+
+#multithread without debug
+.PHONY: Mdll.o clean
+M: Mdll.o
+	$(CCM) -shared -lc -o Plateform.so Driver.o Protocol.o util.o
+Mdll.o: Driver.c Protocol.c util.c clean
+	$(CCM) -c -fpic Driver.c -fpic Protocol.c -fpic util.c
+	
+#no multithread with debug
+.PHONY: Ddll.o clean
+D: Ddll.o
+	$(CCD) -shared -lc -o Plateform.so Driver.o Protocol.o util.o
+Ddll.o: Driver.c Protocol.c util.c clean
+	$(CCD) -c -fpic Driver.c -fpic Protocol.c -fpic util.c	
+	 
+clean:
+	rm -f *.o 
+	rm -f *.so 
